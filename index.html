@@ -92,6 +92,8 @@ WebVRConfig = {
   -->
 <script src="build/webvr-manager.js"></script>
 
+<script src="build/VTKLoader.js"></script>
+
 
 <script>
 // Setup three.js WebGL renderer. Note: Antialiasing is a big performance hit.
@@ -119,8 +121,21 @@ effect.setSize(window.innerWidth, window.innerHeight);
 
 // Add a repeating grid as a skybox.
 var boxSize = 5;
-var loader = new THREE.TextureLoader();
-loader.load('img/box.png', onTextureLoaded);
+//  var loader = new THREE.TextureLoader();
+//  loader.load('img/box.png', onTextureLoaded);
+
+var loader = new THREE.VTKLoader();
+loader.load( "http://x.babymri.org/?skull.vtk", function ( geometry ) {
+
+geometry.center();
+geometry.computeVertexNormals();
+
+var mesh = new THREE.Mesh( geometry, material );
+mesh.position.set( - 0.075, 0.005, 0 );
+mesh.scale.multiplyScalar( 0.2 );
+scene.add( mesh );
+
+} );
 
 function onTextureLoaded(texture) {
   texture.wrapS = THREE.RepeatWrapping;
@@ -161,7 +176,7 @@ var cube = new THREE.Mesh(geometry, material);
 cube.position.set(0, controls.userHeight, -1);
 
 // Add cube mesh to your three.js scene
-scene.add(cube);
+//scene.add(cube);
 
 // Kick off animation loop
 requestAnimationFrame(animate);
