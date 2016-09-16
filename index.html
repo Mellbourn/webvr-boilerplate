@@ -93,6 +93,7 @@ WebVRConfig = {
 <script src="build/webvr-manager.js"></script>
 
 <script src="build/VTKLoader.js"></script>
+<script src="build/STLLoader.js"></script>
 
 
 <script>
@@ -124,8 +125,8 @@ var boxSize = 5;
 //  var loader = new THREE.TextureLoader();
 //  loader.load('img/box.png', onTextureLoaded);
 
-var loader = new THREE.VTKLoader();
-loader.load( "http://x.babymri.org/?skull.vtk", function ( geometry ) {
+var loader = new THREE.STLLoader();
+loader.load( "http://x.babymri.org/?porsche.stl", function ( geometry ) {
 
 geometry.center();
 geometry.computeVertexNormals();
