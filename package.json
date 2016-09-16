@@ -7,12 +7,14 @@
     "test": "test"
   },
   "dependencies": {
+    "lite-server": "^2.2.2",
     "three": "^0.76.1",
     "webvr-polyfill": "^0.9.5"
   },
   "devDependencies": {
     "browserify": "latest",
     "derequire": "latest",
+    "lite-server": "^2.2.2",
     "watchify": "latest"
   },
   "scripts": {
